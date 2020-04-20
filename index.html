@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Kubernetes in minutes</title>
+    <meta charset="utf-8" />
+    <style>
+      @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
+      @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body {
+        font-family: 'Droid Serif';
+      }
+      h1,
+      h2,
+      h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: normal;
+      }
+      img {
+        width: 100%;
+      }
+      .fix-img {
+        width: auto;
+        height: 400px;
+      }
+      .h-v70 {
+        width: auto;
+        height: 70vh;
+      }
+      .h-100 {
+        height: 100%;
+      }
+      .remark-code,
+      .remark-inline-code {
+        font-family: 'Ubuntu Mono';
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Kubernetes in X minutes
+
+---
+## Start from an real example
+
+
+---
+
+## Back in time
+
+<img src="./back_in_time.png" alt="">
+- Container deployment era: Containers are similar to VMs, but they have relaxed isolation properties to share the Operating System (OS) among the applications. Therefore, containers are considered lightweight. 
+
+---
+class: center, middle
+<span class="center">
+<img class="fix-img" src="./docker.png" alt="">
+</span>
+## Docker
+separate your applications from your infrastructure so you can deliver software quickly
+---
+class: center, middle
+<span class="center">
+  <img class="fix-img" src="./compose.png" alt="">
+  </span>
+## Compose
+defining and running multi-container Docker applications. With Compose, you use a YAML file to configure your application’s services. 
+---
+class: center, middle
+<span class="center">
+<img class="fix-img" src="./swarm.png" alt="">
+</span>
+## Swarm
+Clustering and Discovery
+
+
+---
+
+## Kubernetes
+
+<img src="./k8s.png" alt="">
+
+
+---
+## Kubernetes provides
+
+- Service discovery and load balancing
+
+Kubernetes can expose a container using the DNS name or using their own IP address. If traffic to a container is high, Kubernetes is able to load balance and distribute the network traffic so that the deployment is stable.
+
+- Self-healing
+
+Kubernetes restarts containers that fail, replaces containers, kills containers that don’t respond to your user-defined health check, and doesn’t advertise them to clients until they are ready to serve.
+
+- Automated rollouts and rollbacks
+
+You can describe the desired state for your deployed containers using Kubernetes, and it can change the actual state to the desired state at a controlled rate. For example, you can automate Kubernetes to create new containers for your deployment, remove existing containers and adopt all their resources to the new container.
+
+---
+## Kubernetes provides you with:
+
+- Storage orchestration
+
+Kubernetes allows you to automatically mount a storage system of your choice, such as local storages, public cloud providers, and more.
+
+- Automatic bin packing
+
+You provide Kubernetes with a cluster of nodes that it can use to run containerized tasks. You tell Kubernetes how much CPU and memory (RAM) each container needs. Kubernetes can fit containers onto your nodes to make the best use of your resources.
+
+
+- Secret and configuration management
+
+Kubernetes lets you store and manage sensitive information, such as passwords, OAuth tokens, and SSH keys. You can deploy and update secrets and application configuration without rebuilding your container images, and without exposing secrets in your stack configuration.
+
+---
+
+## Kubernetes Architecture
+
+<img src="./Chart_02_Kubernetes-Architecture.png">
+
+---
+
+## Kubernetes Architecture
+
+<img src="./Chart_03_Kubernetes-Master.png" >
+---
+
+## Kubernetes Architecture
+
+<img src="./Chart_04_Kubernetes-Node.png" >
+
+---
+## Lookback: Web Deployment Configuration
+
+```yaml
+Hello: World
+```
+
+---
+
+## Pod: Basic unit of deployment in k8s
+
+<span class="center">
+  <img class="fix-img" src="./pod1.png">
+</span>
+
+---
+
+## Pod: Basic unit of deployment in k8s
+<span class="center">
+<img class="fix-img" src="./pod2.png">
+</span>
+---
+
+## Pod: Basic unit of deployment in k8s
+<span class="center">
+<img class="fix-img" src="./pod3.png">
+</span>
+---
+## Pod: Basic unit of deployment in k8s
+<span class="center">
+<img class="fix-img" src="./pod4.png">
+</span>
+---
+
+## Node
+
+Depends on each node’s resource availability and each pod’s resource requirements
+
+<img src="./node_pod1.png">
+
+---
+## Node
+
+Depends on each node’s resource availability and each pod’s resource requirements
+
+<img src="./node_pod2.png">
+
+---
+## Replica Set: Keeps track of pod replicas
+<img src="./repliace_set1.png">
+---
+## Replica Set: Keeps track of pod replicas
+<img src="./repliace_set2.png">
+---
+## Replica Set: Keeps track of pod replicas
+<img src="./repliace_set3.png">
+---
+## Replica Set: Keeps track of pod replicas
+<img src="./repliace_set4.png">
+---
+## Deployment: Manages Replica Set state transitions
+<span class="center">
+<img class="fix-img" src="./deployment1.png">
+</span>
+---
+## Deployment: Manages Replica Set state transitions
+
+<span class="center">
+  <img class="fix-img" src="./deployment2.png">
+  </span>
+---
+## Deployment: Manages Replica Set state transitions
+
+<span class="center">
+  <img class="fix-img" src="./deployment3.png">
+  </span>
+
+---
+## Deployment: Manages Replica Set state transitions
+
+<span class="center">
+  <img class="fix-img" src="./deployment4.png">
+</span>
+
+---
+## Deployment: Manages Replica Set state transitions
+
+<span class="center">
+  <img class="fix-img" src="./deployment5.png">
+</span>
+
+---
+## Deployment: Manages Replica Set state transitions
+
+<span class="center">
+  <img class="fix-img" src="./deployment6.png">
+</span>
+
+---
+## Deployment: Manages Replica Set state transitions
+
+<span class="center">
+  <img class="fix-img" src="./deployment7.png">
+</span>
+
+---
+## Deployment: Manages Replica Set state transitions
+
+<span class="center">
+  <img class="fix-img" src="./deployment8.png">
+</span>
+
+---
+## Deployment: Manages Replica Set state transitions
+
+<span class="center">
+  <img class="fix-img" src="./deployment9.png">
+</span>
+
+---
+## Deployment: Manages Replica Set state transitions
+
+<span class="center">
+  <img class="fix-img" src="./deployment10.png">
+</span>
+
+---
+## Deployment: Manages Replica Set state transitions
+
+<span class="center">
+  <img class="fix-img" src="./deployment11.png">
+</span>
+
+---
+<span class="center">
+  <img class="fix-img" src="./deployment-replica-pod.png">
+</span>
+# Deployments create ReplicaSets that create Pods.
+
+---
+## Servicves: logical set of pods and ways to access from outer world
+
+<span class="center">
+  <img class="fix-img" src="./services1.png">
+</span>
+---
+## Servicves: logical set of pods and ways to access from outer world
+
+<span class="center">
+  <img class="fix-img" src="./services2.png">
+</span>
+---
+## Servicves: logical set of pods and ways to access from outer world
+
+<span class="center">
+  <img class="fix-img" src="./services3.png">
+</span>
+---
+## Servicves: logical set of pods and ways to access from outer world
+
+<span class="center">
+  <img class="fix-img" src="./services4.png">
+</span>
+---
+## Servicves: logical set of pods and ways to access from outer world
+<span class="center">
+  <img class="fix-img" src="./services5.png">
+</span>
+---
+## Servicves: logical set of pods and ways to access from outer world
+<span class="center">
+  <img class="fix-img" src="./services6.png">
+</span>
+
+---
+## Servicves: logical set of pods and ways to access from outer world
+<span class="center">
+  <img class="fix-img" src="./services7.png">
+</span>
+
+
+</textarea>
+    <script src="./remark.js"></script>
+    <script src="./node_modules/dagre/dist/dagre.min.js"></script>
+    <script src="./node_modules/nomnoml/dist/nomnoml.js"></script>
+    <script src="./node_modules/mermaid/dist/mermaid.min.js"></script>
+    <script>
+      var slideshow = remark.create();
+      mermaid.initialize({startOnLoad:true});
+// const nodes = {
+//   pod: `
+// [Pod A|Container: Nginx | _ | _ ]
+
+// [Pod B|Container: Nginx|Container: React | _ ]
+
+// [Pod C|Container: Nginx|Container: React|Container: Java]
+//   `,
+//   node_pod: `
+  
+//   `
+// };
+
+//     Object.keys(nodes).forEach((id) => {
+//       var canvas = document.getElementById(`g-${id}`);
+//       nomnoml.draw(canvas, nodes[id]);
+//     })
+    </script>
+  </body>
+</html>
