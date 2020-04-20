@@ -1,0 +1,1 @@
+Just a quick intro to k8s, part of photos/screenshots are downloaded from Internet
